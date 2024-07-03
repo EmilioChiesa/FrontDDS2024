@@ -1,18 +1,35 @@
+//Importamos todos los modulos necesarios
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { LoginComponent } from './login/login.component';
+import { TokenInterceptor } from './interceptor-logout.interceptor';
 
+//Indicamos los metadatos para el modulo dentral
 @NgModule({
+  //Se declaran los componentes de la aplicacion
   declarations: [
-    AppComponent
+    AppComponent,
+    DashboardComponent,
+    LoginComponent
   ],
+  //Se importan los modulos
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    RouterModule,
   ],
-  providers: [],
+  //Se indica el uso del interceptor
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },],
+  //Se indica el uso de boostrap
   bootstrap: [AppComponent]
 })
 export class AppModule { }

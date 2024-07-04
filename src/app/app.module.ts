@@ -10,6 +10,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { TokenInterceptor } from './interceptor-logout.interceptor';
+import { ContactoComponent } from './contacto/contacto.component';
 
 //Indicamos los metadatos para el modulo dentral
 @NgModule({
@@ -17,7 +18,8 @@ import { TokenInterceptor } from './interceptor-logout.interceptor';
   declarations: [
     AppComponent,
     DashboardComponent,
-    LoginComponent
+    LoginComponent,
+    ContactoComponent
   ],
   //Se importan los modulos
   imports: [
